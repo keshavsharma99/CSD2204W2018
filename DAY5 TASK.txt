@@ -1,0 +1,14 @@
+TRUNCATE
+-We can't Rollback after performing   .  
+-Truncate reset identity of table.   
+- Trigger is not fired while truncate.
+--It locks the entire table.            |
+-We can't use WHERE clause with it. 
+-It is DDL(Data Definition Language) command.
+
+
+DELETE
+ We can Rollback after delete.
+It locks the table row.
+ We can use WHERE to filter data to delete.
+ Delete does not reset identity of table.
