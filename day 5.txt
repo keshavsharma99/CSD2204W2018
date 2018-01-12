@@ -1,0 +1,478 @@
+
+Setting environment for using XAMPP for Windows.
+728427@128-IMAC29 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 7
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| csd2204w18         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [(none)]> use csd2204w18;
+Database changed
+MariaDB [csd2204w18]> Bye
+
+728427@128-IMAC29 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| csd2204w18         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [(none)]> use csd2204w18;
+Database changed
+MariaDB [csd2204w18]> CREATE TABLE `e1` (
+    ->   `customerID` int(2) DEFAULT NULL,
+    ->   `name` varchar(20) DEFAULT NULL,
+    ->   `nickname` varchar(10) DEFAULT NULL,
+    ->   `address` varchar(50) DEFAULT NULL,
+    ->   `city` varchar(10) DEFAULT NULL,
+    ->   `postalcode` int(6) DEFAULT NULL,
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 8
+MariaDB [csd2204w18]>   CREATE TABLE `e1` (
+    ->   `customerID` int(2) DEFAULT NULL,
+    ->   `name` varchar(20) DEFAULT NULL,
+    ->   `nickname` varchar(10) DEFAULT NULL,
+    ->   `address` varchar(50) DEFAULT NULL,
+    ->   `city` varchar(10) DEFAULT NULL,
+    ->   `postalcode` int(6) DEFAULT NULL
+    -> );
+Query OK, 0 rows affected (0.25 sec)
+
+MariaDB [csd2204w18]> INSERT INTO `e1` VALUES (1,'Ashley','Ash','32 Washington street','WDC',321200),(2,'Bob Marley','Bm','Keele Street','Toronto',100100),(3,'Cherlies Theron','Cher','329 Empire state Building','New York',120134),(4,'Denial Jack','DJ','Spartan Building East','Brazil',341020),(5,'Donna Newman','New','250 Carlson Blvd','Toronto',130120),(6,'Eston M.','M.','21 York. DV.','Toronto',201023),(7,'Booby Chacko','Chao','Kennedy','New York',320300),(11,'KESHAV',NULL,NULL,NULL,NULL);
+Query OK, 8 rows affected (0.06 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]> select * from e1;
++------------+-----------------+----------+---------------------------+----------+------------+
+| customerID | name            | nickname | address                   | city     | postalcode |
++------------+-----------------+----------+---------------------------+----------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      | WDC      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              | Toronto  |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building | New York |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     | Brazil   |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          | Toronto  |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              | Toronto  |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   | New York |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      | NULL     |       NULL |
++------------+-----------------+----------+---------------------------+----------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> Bye
+
+728427@128-IMAC29 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use  csd2204w18;
+Database changed
+MariaDB [csd2204w18]> select * from e1;
++------------+-----------------+----------+---------------------------+----------+------------+
+| customerID | name            | nickname | address                   | city     | postalcode |
++------------+-----------------+----------+---------------------------+----------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      | WDC      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              | Toronto  |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building | New York |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     | Brazil   |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          | Toronto  |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              | Toronto  |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   | New York |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      | NULL     |       NULL |
++------------+-----------------+----------+---------------------------+----------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> create table cityMaster(
+    ->      CityID integer(4) primary key,
+    ->      cityName varchar(255) default 'toronto’
+    ->      );
+Query OK, 0 rows affected (0.26 sec)
+
+MariaDB [csd2204w18]> create table persons(
+    ->      ID integer(3),
+    ->      LasteName varchar(255) NOT NULL,
+    ->      FirstName Varchar(255),
+    ->      Age integer(3),
+    ->      CityID integer(4),
+    ->      constraint pk_persons primary key (ID),
+    ->      constraint ck_persons check (age>=18),
+    ->      constraint fk_persons foreign key (CityID)
+    ->      references CityMaster (CityID)
+    -> );
+Query OK, 0 rows affected (0.22 sec)
+
+MariaDB [csd2204w18]> create j2 Like e1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'j2 Like e1' at line 1
+MariaDB [csd2204w18]> create j2 LIKE e1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'j2 LIKE e1' at line 1
+MariaDB [csd2204w18]> create table j2 LIKE e1;
+Query OK, 0 rows affected (0.86 sec)
+
+MariaDB [csd2204w18]> slect * from j2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'slect * from j2' at line 1
+MariaDB [csd2204w18]> select * from j2;
+Empty set (0.00 sec)
+
+MariaDB [csd2204w18]> desc j2;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| customerID | int(2)      | YES  |     | NULL    |       |
+| name       | varchar(20) | YES  |     | NULL    |       |
+| nickname   | varchar(10) | YES  |     | NULL    |       |
+| address    | varchar(50) | YES  |     | NULL    |       |
+| city       | varchar(10) | YES  |     | NULL    |       |
+| postalcode | int(6)      | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> select * from j2;
+Empty set (0.00 sec)
+
+MariaDB [csd2204w18]> insert into j2 select * from customers;
+ERROR 1146 (42S02): Table 'csd2204w18.customers' doesn't exist
+MariaDB [csd2204w18]> insert into j2 select * from e1;
+Query OK, 8 rows affected (0.07 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]> select * from j2;
++------------+-----------------+----------+---------------------------+----------+------------+
+| customerID | name            | nickname | address                   | city     | postalcode |
++------------+-----------------+----------+---------------------------+----------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      | WDC      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              | Toronto  |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building | New York |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     | Brazil   |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          | Toronto  |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              | Toronto  |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   | New York |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      | NULL     |       NULL |
++------------+-----------------+----------+---------------------------+----------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> SHOW TABLES;
++----------------------+
+| Tables_in_csd2204w18 |
++----------------------+
+| citymaster           |
+| e1                   |
+| j2                   |
+| persons              |
++----------------------+
+4 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> SELECT * FROM CITYMASTER;
+Empty set (0.00 sec)
+
+MariaDB [csd2204w18]> SELECT * FROM citymaster;;
+Empty set (0.00 sec)
+
+ERROR: No query specified
+
+MariaDB [csd2204w18]> SELECT * FROM citymaster;
+Empty set (0.00 sec)
+
+MariaDB [csd2204w18]> SELECT * FROM Citymaster;
+Empty set (0.00 sec)
+
+MariaDB [csd2204w18]> SELECT * FROM  J2;
++------------+-----------------+----------+---------------------------+----------+------------+
+| customerID | name            | nickname | address                   | city     | postalcode |
++------------+-----------------+----------+---------------------------+----------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      | WDC      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              | Toronto  |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building | New York |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     | Brazil   |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          | Toronto  |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              | Toronto  |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   | New York |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      | NULL     |       NULL |
++------------+-----------------+----------+---------------------------+----------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> Bye
+
+728427@128-IMAC29 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.1.21-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| csd2204w18         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [(none)]> USE csd2204w18;
+Database changed
+MariaDB [csd2204w18]> select * from j2;
++------------+-----------------+----------+---------------------------+----------+------------+
+| customerID | name            | nickname | address                   | city     | postalcode |
++------------+-----------------+----------+---------------------------+----------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      | WDC      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              | Toronto  |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building | New York |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     | Brazil   |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          | Toronto  |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              | Toronto  |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   | New York |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      | NULL     |       NULL |
++------------+-----------------+----------+---------------------------+----------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> ALTER TABLE j2
+    -> RENAME COLUMN city to region;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'COLUMN city to region' at line 2
+MariaDB [csd2204w18]> ALTER TABLE j2
+    -> MODIFY city to region;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to region' at line 2
+MariaDB [csd2204w18]> ALTER TABLE j2
+    -> CHANGE COLUMN city to region varchar(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'to region varchar(20)' at line 2
+MariaDB [csd2204w18]> ALTER TABLE j2
+    -> MODIFY city varchar(20);
+Query OK, 8 rows affected (0.91 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]> ALTER TABLE j2
+    -> CHANGE COLUMN city varchar(20) to region varchar(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'varchar(20) to region varchar(20)' at line 2
+MariaDB [csd2204w18]> ALTER TABLE j2
+    -> CHANGE COLUMN city country varchar(20);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]> select * from j2;
++------------+-----------------+----------+---------------------------+----------+------------+
+| customerID | name            | nickname | address                   | country  | postalcode |
++------------+-----------------+----------+---------------------------+----------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      | WDC      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              | Toronto  |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building | New York |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     | Brazil   |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          | Toronto  |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              | Toronto  |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   | New York |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      | NULL     |       NULL |
++------------+-----------------+----------+---------------------------+----------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> ALTER TABLE j2
+    -> DROP COLUMN city;
+ERROR 1091 (42000): Can't DROP 'city'; check that column/key exists
+MariaDB [csd2204w18]> DROP COLUMN country;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'COLUMN country' at line 1
+MariaDB [csd2204w18]> ALTER TABLE j2
+    -> DROP COLUMN cOUNTRY;
+Query OK, 0 rows affected (0.35 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]> select * from j2;
++------------+-----------------+----------+---------------------------+------------+
+| customerID | name            | nickname | address                   | postalcode |
++------------+-----------------+----------+---------------------------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      |       NULL |
++------------+-----------------+----------+---------------------------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> alter table j2 add constraint unique(postalcode);
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]>  alter table j2 modify name varchar(40) not null;
+Query OK, 8 rows affected (0.79 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]> show index from j2;
++-------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table | Non_unique | Key_name   | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++-------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| j2    |          0 | postalcode |            1 | postalcode  | A         |           8 |     NULL | NULL   | YES  | BTREE      |         |               |
++-------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [csd2204w18]> desc j2;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| customerID | int(2)      | YES  |     | NULL    |       |
+| name       | varchar(40) | NO   |     | NULL    |       |
+| nickname   | varchar(10) | YES  |     | NULL    |       |
+| address    | varchar(50) | YES  |     | NULL    |       |
+| postalcode | int(6)      | YES  | UNI | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> create table j3 like j2;
+Query OK, 0 rows affected (0.29 sec)
+
+MariaDB [csd2204w18]> insert in j3 select * from j2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'in j3 select * from j2' at line 1
+MariaDB [csd2204w18]> select * from j2;
++------------+-----------------+----------+---------------------------+------------+
+| customerID | name            | nickname | address                   | postalcode |
++------------+-----------------+----------+---------------------------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      |       NULL |
++------------+-----------------+----------+---------------------------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> insert into j3 select * from j2;
+Query OK, 8 rows affected (0.07 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]> select * from j2;
++------------+-----------------+----------+---------------------------+------------+
+| customerID | name            | nickname | address                   | postalcode |
++------------+-----------------+----------+---------------------------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      |     321200 |
+|          2 | Bob Marley      | Bm       | Keele Street              |     100100 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      |       NULL |
++------------+-----------------+----------+---------------------------+------------+
+8 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> desc j3;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| customerID | int(2)      | YES  |     | NULL    |       |
+| name       | varchar(40) | NO   |     | NULL    |       |
+| nickname   | varchar(10) | YES  |     | NULL    |       |
+| address    | varchar(50) | YES  |     | NULL    |       |
+| postalcode | int(6)      | YES  | UNI | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> alter table j3
+    -> ;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [csd2204w18]> SHOW INDEX FROM j3;
++-------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table | Non_unique | Key_name   | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++-------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| j3    |          0 | postalcode |            1 | postalcode  | A         |           8 |     NULL | NULL   | YES  | BTREE      |         |               |
++-------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+1 row in set (0.00 sec)
+
+MariaDB [csd2204w18]> ALTER TABLE j2 DROP Primary key;
+ERROR 1091 (42000): Can't DROP 'PRIMARY'; check that column/key exists
+MariaDB [csd2204w18]> ALTER TABLE j2 DROP primary key;
+ERROR 1091 (42000): Can't DROP 'PRIMARY'; check that column/key exists
+MariaDB [csd2204w18]> DELETE FROM j2
+    -> Where customerID=2;
+Query OK, 1 row affected (0.11 sec)
+
+MariaDB [csd2204w18]> select * from j2;
++------------+-----------------+----------+---------------------------+------------+
+| customerID | name            | nickname | address                   | postalcode |
++------------+-----------------+----------+---------------------------+------------+
+|          1 | Ashley          | Ash      | 32 Washington street      |     321200 |
+|          3 | Cherlies Theron | Cher     | 329 Empire state Building |     120134 |
+|          4 | Denial Jack     | DJ       | Spartan Building East     |     341020 |
+|          5 | Donna Newman    | New      | 250 Carlson Blvd          |     130120 |
+|          6 | Eston M.        | M.       | 21 York. DV.              |     201023 |
+|          7 | Booby Chacko    | Chao     | Kennedy                   |     320300 |
+|         11 | KESHAV          | NULL     | NULL                      |       NULL |
++------------+-----------------+----------+---------------------------+------------+
+7 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> delete * from j2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '* from j2' at line 1
+MariaDB [csd2204w18]> delete nickname from j2;
+ERROR 1109 (42S02): Unknown table 'nickname' in MULTI DELETE
+MariaDB [csd2204w18]> truncate table j3;
+Query OK, 0 rows affected (0.35 sec)
+
+MariaDB [csd2204w18]> desc j2;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| customerID | int(2)      | YES  |     | NULL    |       |
+| name       | varchar(40) | NO   |     | NULL    |       |
+| nickname   | varchar(10) | YES  |     | NULL    |       |
+| address    | varchar(50) | YES  |     | NULL    |       |
+| postalcode | int(6)      | YES  | UNI | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+MariaDB [csd2204w18]> select * fro j2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fro j2' at line 1
+MariaDB [csd2204w18]> select * fro j3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'fro j3' at line 1
+MariaDB [csd2204w18]> select * from j3;
+Empty set (0.00 sec)
+
+MariaDB [csd2204w18]>
